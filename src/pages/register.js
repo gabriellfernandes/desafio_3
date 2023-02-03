@@ -1,12 +1,18 @@
 import Head from 'next/head'
 import { Inter } from '@next/font/google'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { GeneralContext } from '@/context'
 
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Register() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [name, setName] = useState("");
+    const [phone, setPhone] = useState("");
+    const { handleRegister } = useContext(GeneralContext);
 
     return (
         <>
@@ -19,11 +25,21 @@ export default function Register() {
         <div className='flex w-full items-center justify-around gap-20 h-[100vh] bg-[#119DA4]'>
             <main className=' p-20 rounded-md  w-[35%] h-auto flex items-center justify-center flex-col gap-5 bg-[#13505B]'>
             <h2 className="text-white text-3xl font-bold">Cadastre-se</h2>
-            <input placeholder='Nome completo' required/>
-            <input placeholder='Email' required/>
-            <input placeholder='Senha' required/>
-            <input placeholder='Telephone' required/>
-            <Link href={"/login"}>Cadastrar-se</Link>
+            <form onSubmit={(e) => {
+                e.preventDefault()
+                handleRegister({
+                    email,
+                    password,
+                    name,
+                    phone
+                })
+            }}>
+                <input placeholder='Nome completo' required value={name} onChange={(e) => {setName(e.target.value)}}/>
+                <input placeholder='Email' required value={email} onChange={(e) => {setEmail(e.target.value)}}/>
+                <input placeholder='Senha' required value={password} onChange={(e) => {setPassword(e.target.value)}} type="password"/>
+                <input placeholder='Telephone' required value={phone} onChange={(e) => {setPhone(e.target.value)}}/>
+                <button href={"/login"} type="submit">Cadastrar-se</button>
+            </form>
             </main>
         </div>
 

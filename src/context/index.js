@@ -17,10 +17,8 @@ export const GeneralProvider = ({ children }) => {
   }
 
   const handleRegister = (data) => {
-    api.post("/auth/login", data).then(res => {
-        console.log(res.data.user)
-
-        return setUser(res.data.user)
+    api.post("/users/register", data).then(res => {
+        return navigate("/login")
     }).catch(err => console.log(err.data))
   }
 
