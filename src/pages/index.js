@@ -15,14 +15,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className='flex w-full items-center justify-around gap-20 h-[100vh] bg-[#119DA4]'>
-        <main className=' p-20 rounded-md  w-[35%] h-[40%] flex items-center justify-center flex-col gap-5 bg-[#13505B]'>
-          <h2 className="text-white text-3xl font-bold">O que voce deseja fazer?</h2>
+        <main className=' p-20 rounded-md h-[40%] flex items-center justify-center flex-col gap-5 bg-[#13505B] w-[80%] text-lg sm:w-[40%] sm:text-xl'>
+          <h2 className="text-white text-2xl min-w-[200px] text-center sm:text-3xl font-bold">O que voce deseja fazer?</h2>
           <Link href={"/login"}>Logar-se</Link>
           <Link href={"/register"} >Registrar-se</Link>
  
         </main>
 
-        <img src={"https://res.cloudinary.com/da4pzol89/image/upload/v1675449683/business-idea_clctmy.png"} className="w-[40%]"/>
+        <img src={"https://res.cloudinary.com/da4pzol89/image/upload/v1675449683/business-idea_clctmy.png"} className="w-[40%] hidden sm:flex"/>
       </div>
 
     </>

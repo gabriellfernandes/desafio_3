@@ -49,6 +49,8 @@ const Idparams = async (req, res) => {
 
 
   const params = req.query;
+  const { id } = req.user;
+
 
   if (params.id !== undefined) {
     if (req.method === "GET") {
@@ -91,6 +93,24 @@ const Idparams = async (req, res) => {
           message: "contact updated",
           contact: { ...updateUser, password: undefined },
         });
+    }
+
+    if (req.method === "DELETE") {
+      if (!params.id) {
+        return res.status(400).json("must provide an id");
+      }
+    
+      const contact = await client.contacts.findUnique({
+        where: { id: params.id },
+      });
+    
+      if (!contact) {
+        return res.status(409).json("contact not found");
+      }
+    
+      await client.contacts.delete({ where: { id: params.id } });
+    
+      return res.json({ message: "contact deleted" });
     }
   }
 };

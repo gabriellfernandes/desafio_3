@@ -23,8 +23,8 @@ export default function Register() {
             <link rel="icon" href="/favicon.ico" />
         </Head>
         <div className='flex w-full items-center justify-around gap-20 h-[100vh] bg-[#119DA4]'>
-            <main className=' p-20 rounded-md  w-[35%] h-auto flex items-center justify-center flex-col gap-5 bg-[#13505B]'>
-            <h2 className="text-white text-3xl font-bold">Cadastre-se</h2>
+            <main className=' p-20 rounded-md h-auto flex items-center justify-center flex-col gap-5 bg-[#13505B]  w-[80%] text-lg sm:w-[40%] sm:text-xl'>
+            <h2 className="text-white text-2xl min-w-[200px] text-center sm:text-3xl font-bold">Cadastre-se</h2>
             <form onSubmit={(e) => {
                 e.preventDefault()
                 handleRegister({
@@ -35,10 +35,10 @@ export default function Register() {
                 })
             }}>
                 <input placeholder='Nome completo' required value={name} onChange={(e) => {setName(e.target.value)}}/>
-                <input placeholder='Email' required value={email} onChange={(e) => {setEmail(e.target.value)}}/>
+                <input placeholder='Email' required value={email} onChange={(e) => {setEmail(e.target.value)}} type="email"/>
                 <input placeholder='Senha' required value={password} onChange={(e) => {setPassword(e.target.value)}} type="password"/>
                 <input placeholder='Telephone' required value={phone} onChange={(e) => {setPhone(e.target.value)}}/>
-                <button href={"/login"} type="submit">Cadastrar-se</button>
+                <button href={"/login"} type="submit" className="buttons">Cadastrar-se</button>
             </form>
             </main>
         </div>

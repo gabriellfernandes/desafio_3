@@ -20,8 +20,8 @@ export default function Login() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex w-full items-center justify-around gap-20 h-[100vh] bg-[#119DA4]">
-        <main className=" p-20 rounded-md  w-[35%] h-auto  flex items-center justify-center flex-col gap-5 bg-[#13505B]">
-          <h2 className="text-white text-3xl font-bold">Digite sua conta</h2>
+        <main className=" p-20 rounded-md h-auto  flex items-center justify-center flex-col gap-5 bg-[#13505B] w-[80%] text-lg sm:w-[40%] sm:text-xl">
+          <h2 className="text-white text-2xl min-w-[200px] text-center sm:text-3xl font-bold">Digite sua conta</h2>
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -41,7 +41,7 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
               type="password"
             />
-            <button type="submit">Logar-se</button>
+            <button type="submit" className="buttons">Logar-se</button>
           </form>
         </main>
       </div>

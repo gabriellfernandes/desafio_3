@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 import Cors from "cors";
 import client from "@/utils/databaseClient";
 import contact from "../contact";
+import { hash } from "bcryptjs";
 
 
 async function TokenMiddleware(req, res, fn) {
@@ -98,7 +99,23 @@ export default async function users(req, res) {
       message: "user updated",
       user: {...updateUser, password: undefined},
     });
-  }else{
-    return res.status(400, { message: "only Get and Patch routes"})
+  }else if (req.method === "DELETE") {
+    const findUser = await client.users.findUnique({
+      where: { id },
+    });
+
+    if (!findUser) {
+      return res.status(409).json("user not found");
+    }
+
+    await client.users.delete({
+      where: { id },
+    });
+
+    return res.json({
+      message: "user deleted",
+    });
+  } else {
+    return res.status(400).json({ message: "only Get, Patch, and Delete routes are supported" });
   }
 }
