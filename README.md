@@ -5,8 +5,22 @@ Primeiro rode o comando
 
 ```bash
 Yarn ou npm install
+```
 
-Depois rode o comando
+##como instalar banco da dados:
+```
+crie um arquivo .env com seguintes dados dentro.
+
+DATABASE_URL="postgresql://"usuario":"senha do usuario"@localhost:5432/"nome do banco de dados"?schema=public"
+SECRET_KEY="secreto"
+
+Após isso rode o comando:
+yarn prisma migrate dev
+ou
+npm prisma migrate dev
+
+
+Depois rode o comando para iniciar o projeto em localHost
 npm run dev
 # ou
 yarn dev
@@ -80,4 +94,9 @@ Pagina incial: http://localhost:3000/
 Pagina login: http://localhost:3000/login
 
 Pagina Registro http://localhost:3000/register 
+
+Pagina principal http://localhost:3000/dashbord
 ```
+
+##Ideia do projeto:
+Uma agenda de contatos online onde voce pode adicionar contatos, podendo alterar e remover
